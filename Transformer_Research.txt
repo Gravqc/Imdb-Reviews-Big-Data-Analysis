@@ -1,0 +1,121 @@
+-The paper is trying to create a transformer model using the attention model(self attention).
+
+***************
+Key Components:
+
+1. Self-Attention Mechanism:
+The model is able to weigh the importance of different words in a sequence relative to 	each other, regardless of their position in the sequence.
+This is crucial for understanding the context and relationships between words in a sentence.
+
+Think of it like listening to a friend’s story about a restaurant. They might start by saying, “The service was a bit slow, but the food was absolutely amazing, and the ambiance was perfect.” Even though they mentioned a negative aspect first (“slow service”), you 	understand that their overall experience was positive because of the emphasis they put on 	the “amazing food” and “perfect ambiance.”
+
+***************
+2. Multi-Head Attention:
+Instead of having a single set of attention weights, the Transformer uses multiple sets, allowing the model to focus on different parts of the input sequence for different tasks.
+This helps the model to capture information from different representation subspaces.
+
+Imagine you are trying to understand a sentence in a book, and you have a highlighter to mark important words. If you only have one highlighter (or one set of attention weights), you might just highlight the main subject and verb to understand the basic structure of the sentence.
+Now, imagine you have multiple highlighters of different colors (or multiple sets of attention weights). With these, you can highlight not just the main subject and verb, but also other important aspects of the sentence, like adjectives, adverbs, or phrases that provide context. Each color of highlighter focuses on a different part of the sentence, helping you to understand the sentence in a more comprehensive way.
+In the Transformer model, having multiple sets of attention weights (also known as multi-head attention) works in a similar way. Instead of focusing on just one part of the input sequence, the model can pay attention to different parts of the input for different tasks or aspects of the data. This allows the Transformer to capture a richer and more nuanced understanding of the input data, leading to better performance on a variety of tasks.
+
+***************
+3. Positional Encoding:
+Since the Transformer does not use recurrence or convolution, it does not have any inherent understanding of the position of words in a sequence.
+Positional encodings are added to the input embeddings to give the model information about the position of the words.
+
+Comparision with RNN, CNN, Transformer:
+1. Recurrent Neural Networks (RNNs):
+Imagine you are watching a movie, and you are trying to understand the storyline. You need to remember what happened earlier in the movie to make sense of what is happening now. This is similar to how RNNs work. They remember previous information to understand the current context.
+
+Example: If a character says, “He is my brother,” you understand who “he” is because you remember the previous scenes where the character was introduced.
+
+2. Convolutional Neural Networks (CNNs):
+Think of CNNs like a detective with a magnifying glass, examining a piece of evidence closely to find patterns or clues. The detective looks at different parts of the evidence but focuses on small areas at a time.
+
+Example: If you are trying to solve a jigsaw puzzle, you look at small groups of pieces to find patterns and see how they fit together. This is similar to how CNNs use filters to look at small parts of the input data to find patterns.
+
+3. Transformer Model:
+Now, imagine you are in a group discussion, and you are trying to pay attention to what everyone is saying. You decide where to focus your attention based on what you think is important at the moment. The Transformer model works similarly, deciding which parts of the input data to focus on.
+
+Example: In a meeting, if someone starts talking about a topic you are interested in, you pay more attention to them. This is like the attention mechanism in the Transformer model, which weighs the importance of different parts of the input data.
+
+4. Positional Encodings:
+Going back to the group discussion example, imagine if there was no order in which people spoke, and everyone’s words were jumbled up. It would be hard to understand the conversation. Positional encodings are like time stamps on each person’s words, helping you understand the order of the conversation.
+
+Example: If someone says, “I agree with what John said about the budget,” you understand this statement because you remember when John spoke about the budget earlier in the meeting. The positional encodings help the Transformer model understand the order of words in a similar way.
+
+In Summary:
+RNNs are like watching a movie, where you need to remember previous scenes to understand the current one.
+CNNs are like solving a jigsaw puzzle, focusing on small areas to find patterns.
+The Transformer model is like participating in a group discussion, deciding where to focus your attention.
+Positional encodings are like time stamps in a conversation, helping you understand the order of what was said.
+
+***************
+4. Layer Normalization and Feedforward Networks:
+Each sub-layer of the model (including attention layers and feedforward neural networks) has residual connections around it, and a layer normalization step is applied to the output of each sub-layer.
+This helps in stabilizing the activations throughout the network and accelerates training.
+
+1. Layer Normalization:
+Layer normalization is a technique used to normalize the inputs of a layer in a neural network, which helps in stabilizing the activations (the values that are passed from one layer to the next) throughout the network. This is done to ensure that the scale of the activations doesn’t become too high or too low, which can lead to problems like exploding or vanishing gradients during training.
+
+Practical Example: Imagine you are trying to train a neural network to recognize different types of fruits from images. If the pixel values of the images are not normalized (i.e., their values are not scaled to a similar range), some images might have very high pixel values while others have very low values. This discrepancy can make it harder for the network to learn. Layer normalization helps in scaling these values to a similar range, making the learning process smoother and faster.
+
+2. Residual Connections:
+Residual connections (or skip connections) allow the output of one layer to bypass one or more layers and be added directly to the output of a later layer. This helps in training deep networks as it allows the gradient to flow more easily through the network.
+
+Practical Example: Think of it as a highway with multiple lanes. The main road is the direct path for the data through the network. Residual connections are like express lanes that allow some of the information to skip past certain layers and go directly to later layers. This helps in faster and more efficient training, especially for deep networks.
+
+3. Feedforward Neural Networks:
+A feedforward neural network is a type of artificial neural network where the connections between the nodes do not form a cycle. The information moves in only one direction—forward—from the input nodes, through the hidden nodes (if any), and to the output nodes.
+
+Practical Example: Going back to the fruit recognition example, a feedforward network would take the pixel values of the fruit image as input, process it through one or more hidden layers, and finally output a prediction of the fruit type.
+
+4. Sub-layers and Layers:
+In the context of neural networks, a layer is a collection of nodes (neurons) that perform a set of calculations on the input data. Each layer transforms the data in some way, and the output of one layer becomes the input for the next layer.
+
+A sub-layer refers to a smaller part of a layer that performs a specific function. In the Transformer model, each layer has two main sub-layers: the multi-head self-attention mechanism, and the position-wise fully connected feed-forward network.
+
+Putting It All Together:
+In the Transformer model, each sub-layer (including attention layers and feedforward networks) has residual connections around it, meaning the output of a sub-layer is added to its input before being passed to the next sub-layer. This helps in maintaining the flow of information and gradients through the network, which is especially important for training deep networks.
+
+Layer normalization is applied after these residual connections, helping to stabilize the activations and ensuring that they remain in a reasonable range. This contributes to faster and more stable training of the Transformer model.
+
+**************
+5. Encoder-Decoder Architecture:
+The Transformer model follows an encoder-decoder architecture, where the encoder processes the input sequence, and the decoder generates the output sequence.
+Both the encoder and decoder are composed of a stack of identical layers.
+
+Encoder-Decoder Architecture:
+The encoder-decoder architecture consists of two main parts:
+
+Encoder: It takes the input sequence (e.g., a sentence in English) and processes it to create a representation of the information. This representation is often in the form of feature vectors that capture the essence of the input.
+
+Decoder: It takes the representation produced by the encoder and generates the output sequence (e.g., the translated sentence in French).
+
+Both the encoder and decoder are made up of layers, and in the case of the Transformer model, these layers are identical in structure but have their own parameters.
+
+Practical Example: Machine Translation
+Imagine you have a sentence in English: "I love programming." and you want to translate it to French: "J'adore la programmation."
+
+Encoder:
+
+The encoder takes the English sentence as input.
+It processes the sentence word by word, capturing the context and relationships between words.
+The encoder transforms this sentence into a set of feature vectors that represent the meaning and structure of the sentence.
+Decoder:
+
+The decoder takes the feature vectors from the encoder as input.
+It starts generating the French translation word by word.
+The decoder not only uses the information from the encoder but also pays attention to the words it has already generated to ensure coherence and accuracy in the translation.
+Finally, the decoder outputs the French sentence: "J'adore la programmation."
+Stacked Layers:
+Both the encoder and decoder consist of multiple layers stacked on top of each other.
+Each layer performs specific transformations on the data, capturing different aspects of the information.
+The layers are identical in structure, meaning they perform the same types of operations, but they have their own parameters that are learned during training.
+Conclusion:
+In summary, the encoder-decoder architecture in the Transformer model allows for the processing of sequences, capturing the relationships between elements in the sequence and generating coherent and contextually relevant output sequences. The use of stacked layers helps in capturing different levels of abstraction and relationships in the data, contributing to the model’s ability to understand and generate complex sequences.
+**************
+Applications and Impact:
+The Transformer model has set new standards in a wide range of NLP tasks, including machine translation, text summarization, and question answering.
+Its efficiency in handling long-range dependencies and its parallelizable training process have made it the foundation for subsequent models like BERT, GPT, and others.
+In summary, the Transformer model introduced in the "Attention Is All You Need" paper represents a significant shift in how neural networks are applied to NLP tasks, with a focus on attention mechanisms and the elimination of recurrence and convolution from the architecture. This has led to substantial improvements in performance across a variety of NLP applications.
