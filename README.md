@@ -48,3 +48,6 @@ Vaswani et al., "Attention is All You Need."
 Zhuang et al., "A Survey on Efficient Training of Transformers."
 Additional relevant literature.
 Note: For the full implementati
+
+## Presentation
+For a live presentation, click [here](https://drive.google.com/file/d/1BqLSlUDxQvYDs2tzaU2Gy_IzNKLSyJGN/view?usp=drive_link)
